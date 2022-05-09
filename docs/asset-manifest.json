@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.44648d61.css",
-    "main.js": "/static/js/main.eced89e9.js",
+    "main.js": "/static/js/main.01afd051.js",
     "static/js/787.60a4f708.chunk.js": "/static/js/787.60a4f708.chunk.js",
     "static/media/tomato_join.png": "/static/media/tomato_join.01c738eacf987c05b3d0.png",
     "index.html": "/index.html",
     "main.44648d61.css.map": "/static/css/main.44648d61.css.map",
-    "main.eced89e9.js.map": "/static/js/main.eced89e9.js.map",
+    "main.01afd051.js.map": "/static/js/main.01afd051.js.map",
     "787.60a4f708.chunk.js.map": "/static/js/787.60a4f708.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.44648d61.css",
-    "static/js/main.eced89e9.js"
+    "static/js/main.01afd051.js"
   ]
 }
