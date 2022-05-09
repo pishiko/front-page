@@ -67,8 +67,8 @@ function App() {
             </a>
           </div>
           <div>
-            <a target={"_blank"} href="https://memo.p4ko.com" rel="noreferrer">
-              TechBlog (memo.p4ko.com)
+            <a target={"_blank"} href="https://blog.p4ko.com" rel="noreferrer">
+              TechBlog (blog.p4ko.com)
             </a>
           </div>
           <div>
