@@ -27,9 +27,11 @@ function App() {
         onExited={() => setExplosion(true)}
       >
         <div className="titles">
-          <div className="title">p</div>
-          <div className="title">4</div>
-          <div className="title">k</div>
+          <div className="titles-container-l">
+            <div className="title">p</div>
+            <div className="title">4</div>
+            <div className="title">k</div>
+          </div>
           <CSSTransition
             in={explosion}
             timeout={3000}
@@ -37,12 +39,14 @@ function App() {
             classNames={"tomato"}
             onEntered={() => setExplosion(false)}
           >
-            <div className="tomato"></div>
+            <div className="tomato">o</div>
           </CSSTransition>
-          <div className="title">.</div>
-          <div className="title">c</div>
-          <div className="title">o</div>
-          <div className="title">m</div>
+          <div className="titles-container-r">
+            <div className="title">.</div>
+            <div className="title">c</div>
+            <div className="title">o</div>
+            <div className="title">m</div>
+          </div>
         </div>
       </CSSTransition>
       <CSSTransition
@@ -51,44 +55,35 @@ function App() {
         unmountOnExit={false}
         classNames={"content"}
       >
-        <div
-          className="content"
-          style={{ fontSize: "10vh", color: "white", paddingLeft: "3vw" }}
-        >
-          p4ko.com
-          <div style={{ fontSize: "3vh", color: "white" }}>
-            <div>
-              <a
-                target={"_blank"}
-                href="https://twitter.com/pishitaro_"
-                rel="noreferrer"
-              >
-                Twitter (@pishitaro_)
-              </a>
-            </div>
-            <div>
-              <a
-                target={"_blank"}
-                href="https://memo.p4ko.com"
-                rel="noreferrer"
-              >
-                TechBlog (memo.p4ko.com)
-              </a>
-            </div>
-            <div>
-              <a target={"_blank"} href="https://note.com/p4k" rel="noreferrer">
-                note (note.com/p4k)
-              </a>
-            </div>
-            <div>
-              <a
-                target={"_blank"}
-                href="https://github.com/pishiko"
-                rel="noreferrer"
-              >
-                GitHub (github.com/pishiko)
-              </a>
-            </div>
+        <div className="content">
+          <h1>p4ko.com</h1>
+          <div>
+            <a
+              target={"_blank"}
+              href="https://twitter.com/pishitaro_"
+              rel="noreferrer"
+            >
+              Twitter (@pishitaro_)
+            </a>
+          </div>
+          <div>
+            <a target={"_blank"} href="https://memo.p4ko.com" rel="noreferrer">
+              TechBlog (memo.p4ko.com)
+            </a>
+          </div>
+          <div>
+            <a target={"_blank"} href="https://note.com/p4k" rel="noreferrer">
+              note (note.com/p4k)
+            </a>
+          </div>
+          <div>
+            <a
+              target={"_blank"}
+              href="https://github.com/pishiko"
+              rel="noreferrer"
+            >
+              GitHub (github.com/pishiko)
+            </a>
           </div>
         </div>
       </CSSTransition>
