@@ -122,13 +122,15 @@ body {
   width:97vw;
   padding-left: 3vw;
   height: 100vh;
-  visibility: hidden;
+  opacity: 0;
   font-size: 3vh;
   color: white;
+  z-index: -1;
 }
 
 .content-enter-done {
-  visibility: visible;
+  opacity:1;
+  transition: opacity 1s;
 }
 
 .content:before {
@@ -142,10 +144,10 @@ body {
   transform: translate(0, 100%);
   transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) .6s;
   content: '';
+  z-index: -2;
 }
 
 .content-enter-done:before {
-  z-index: -1;
   transform: translate(0, 0);
 }
 
