@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+  <script data-ad-client="ca-pub-6134002879217738" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <meta name="google-site-verification" content="cmuKoqOLuwpYoCgAz6trdGp_ipiqBR2BU5VHLeGaGFI" />
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>このブログをHugoで作った // ぴしめも</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="pishiko" />
+  <meta name="description" content="" />
+  <link rel="stylesheet"
+    href="https://blog.p4ko.com/css/main.min.20f8fc25c6101790716780b492dadf4ed1c718b46d5620320ff33b85a8ea088c.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.p4ko.com/ogp/hugo1.png" />
+
+  <meta name="twitter:title" content="このブログをHugoで作った" />
+  <meta name="twitter:description"
+    content="Hugo ＋ GitHub Pages このブログは Hugo &#43; github pages で公開しています．テンプレートのカスタムをしてると意外と情報が無かったです．ということで，Hugo のインストールからブログの更新まで簡単にメモしたいと思います．
+そもそもなにそれ Hugo は静的ブログジェネレータというやつです．テンプレートと markdown の記事を用意すればhugoで index.html なんかを生成してくれます．Go 製です．早いです．
+github pages はリポジトリに置いておいた静的ファイルをホストしてくれるサービスです．
+Hugo のインストール Windows10 の場合です． https://github.com/gohugoio/hugo/releasesから最新リリースをダウンロードしてパスを通します．Hugo\binなんかにHugo.exeを移して PATH を通します．
+そういえばこのとき PATH の上限 2000 文字くらいを超えてて GUI だとうまくいかないというのに出会った．とりあえずユーザ環境変数にしておいた．
+Hugo のテーマ適用 hugo new site myblog  これでわーっと一式生成してくれます．
+その後，https://themes.gohugo.io/で適当なテーマをダウンロードし，\themes\直下に適当な名前（テーマ名とか）にリネームしてディレクトリごとコピーします．
+\config.tomlに設定を色々書いていきます．と言っても基本はコピペです．絶対に変えるのは
+baseURL = &quot;例 https://pishiko.github.io&quot; theme = &quot;さっきリネームしたテンプレート名&quot;  で，あとは（テンプレートによると思いますが，）\themes\適当なテンプレート名\exampleSite\config.tomlにテンプレート固有の設定があったのでコピペして適宜変更しました．
+Hugo でブログ生成 hugo new content\posts\test.md  するとひな形が生成されます． ひな形はこんな感じにすれば OK
+--- title: &quot;Hello, world!&quot; date: 2020-02-01T23:08:52&#43;09:00 draft: false tags: [&quot;memo&quot;] --- 注意すべきはdraftで，trueだと非公開状態（＝ debug モード）のみ公開なので false にしないとデプロイしても反映されなくて泣く．" />
+
+  <meta property="og:title" content="このブログをHugoで作った" />
+  <meta property="og:description"
+    content="Hugo ＋ GitHub Pages このブログは Hugo &#43; github pages で公開しています．テンプレートのカスタムをしてると意外と情報が無かったです．ということで，Hugo のインストールからブログの更新まで簡単にメモしたいと思います．
+そもそもなにそれ Hugo は静的ブログジェネレータというやつです．テンプレートと markdown の記事を用意すればhugoで index.html なんかを生成してくれます．Go 製です．早いです．
+github pages はリポジトリに置いておいた静的ファイルをホストしてくれるサービスです．
+Hugo のインストール Windows10 の場合です． https://github.com/gohugoio/hugo/releasesから最新リリースをダウンロードしてパスを通します．Hugo\binなんかにHugo.exeを移して PATH を通します．
+そういえばこのとき PATH の上限 2000 文字くらいを超えてて GUI だとうまくいかないというのに出会った．とりあえずユーザ環境変数にしておいた．
+Hugo のテーマ適用 hugo new site myblog  これでわーっと一式生成してくれます．
+その後，https://themes.gohugo.io/で適当なテーマをダウンロードし，\themes\直下に適当な名前（テーマ名とか）にリネームしてディレクトリごとコピーします．
+\config.tomlに設定を色々書いていきます．と言っても基本はコピペです．絶対に変えるのは
+baseURL = &quot;例 https://pishiko.github.io&quot; theme = &quot;さっきリネームしたテンプレート名&quot;  で，あとは（テンプレートによると思いますが，）\themes\適当なテンプレート名\exampleSite\config.tomlにテンプレート固有の設定があったのでコピペして適宜変更しました．
+Hugo でブログ生成 hugo new content\posts\test.md  するとひな形が生成されます． ひな形はこんな感じにすれば OK
+--- title: &quot;Hello, world!&quot; date: 2020-02-01T23:08:52&#43;09:00 draft: false tags: [&quot;memo&quot;] --- 注意すべきはdraftで，trueだと非公開状態（＝ debug モード）のみ公開なので false にしないとデプロイしても反映されなくて泣く．" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://blog.p4ko.com/posts/hugo1/" />
+  <meta property="og:image" content="https://blog.p4ko.com/ogp/hugo1.png" />
+  <meta property="article:published_time" content="2020-02-02T09:29:15+09:00" />
+  <meta property="article:modified_time" content="2020-02-02T09:29:15+09:00" />
+
+
+
+
+</head>
+
+<body>
+  redirect to <a href="https://blog.p4ko.com">blog.p4ko.com</a>
+  <script>
+    location.href = `https://blog.p4ko.com${location.pathname}`
+  </script>
+</body>
+
+</html>
