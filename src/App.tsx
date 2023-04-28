@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import "./App.css";
 import { CSSTransition } from "react-transition-group";
 
@@ -6,13 +6,23 @@ function App() {
   const [titleActive, setTitleActive] = useState(false);
   const [explosion, setExplosion] = useState(false);
   const [curtain, setCurtain] = useState(false);
+  const [animationDone, setAnimationDone] = useState(false);
+
+  const [mousePosRate, setMousePosRate] = useState({ x: 0, y: 0 });
+
+  const onMouseMove: MouseEventHandler = (event) => {
+    if (!animationDone) return;
+    const xr = (event.clientX / window.innerWidth - 0.5) * 2;
+    const yr = (event.clientY / window.innerHeight - 0.5) * 2;
+    setMousePosRate({ x: xr, y: yr });
+  };
 
   useEffect(() => {
     setTitleActive(true);
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" onMouseMove={onMouseMove}>
       <CSSTransition
         in={titleActive}
         timeout={2000}
@@ -39,7 +49,15 @@ function App() {
             classNames={"tomato"}
             onEntered={() => setExplosion(false)}
           >
-            <div className="tomato">o</div>
+            <div
+              className="tomato"
+              style={{
+                left: -mousePosRate.x * 8,
+                top: -mousePosRate.y * 8,
+              }}
+            >
+              o
+            </div>
           </CSSTransition>
           <div className="titles-container-r">
             <div className="title">.</div>
@@ -54,6 +72,9 @@ function App() {
         timeout={1000}
         unmountOnExit={false}
         classNames={"content"}
+        onEntered={() => {
+          setAnimationDone(true);
+        }}
       >
         <div className="content">
           <h1>p4ko.com</h1>
