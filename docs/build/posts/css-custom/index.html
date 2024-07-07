@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+
+
+  <title>Hugoのthemeを上書きできない問題 // ぴしめも</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="pishiko" />
+  <meta name="description" content="" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.p4ko.com/ogp/css-custom.png" />
+
+  <meta name="twitter:title" content="Hugoのthemeを上書きできない問題" />
+  <meta name="twitter:description" content="hugo serverで確認しながらテーマの上書きを試みてるんだけど，全然上書きされない．
+あれーと思って キャッシュを強制再読み込みする --ignoreCache を付けてサーバーを起動してみたら次のエラーが出た．
+&gt;hugo server --ignoreCache Building sites … ERROR 2020/10/06 14:44:37 Transformation failed: TOCSS: failed to transform &quot;css/main.scss&quot; (text/x-scss): this feature is not available in your current Hugo version, see https://goo.gl/YMrWcn for more information Built in 501 ms Error: Error building site: logged 1 error(s) で，公式のヘルプを読む．
+Frequently Asked Questions | Hugo
+要約すると，Hugo は 2 バージョンあって，通常版と extended 版がある．Sass(css の拡張言語)に対応してるのは extended 版だけだからそっちにしてね．です．ちなみに，extended 版は少し重いらしい．あんまり気にならなかったけど．
+ということでReleases · gohugoio/hugoからダウンロードして，Path を通してあった場所を探して，Hugo.exe だけ入れ替える．" />
+
+  <meta property="og:title" content="Hugoのthemeを上書きできない問題" />
+  <meta property="og:description" content="hugo serverで確認しながらテーマの上書きを試みてるんだけど，全然上書きされない．
+あれーと思って キャッシュを強制再読み込みする --ignoreCache を付けてサーバーを起動してみたら次のエラーが出た．
+&gt;hugo server --ignoreCache Building sites … ERROR 2020/10/06 14:44:37 Transformation failed: TOCSS: failed to transform &quot;css/main.scss&quot; (text/x-scss): this feature is not available in your current Hugo version, see https://goo.gl/YMrWcn for more information Built in 501 ms Error: Error building site: logged 1 error(s) で，公式のヘルプを読む．
+Frequently Asked Questions | Hugo
+要約すると，Hugo は 2 バージョンあって，通常版と extended 版がある．Sass(css の拡張言語)に対応してるのは extended 版だけだからそっちにしてね．です．ちなみに，extended 版は少し重いらしい．あんまり気にならなかったけど．
+ということでReleases · gohugoio/hugoからダウンロードして，Path を通してあった場所を探して，Hugo.exe だけ入れ替える．" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://blog.p4ko.com/posts/css-custom/" />
+  <meta property="og:image" content="https://blog.p4ko.com/ogp/css-custom.png" />
+  <meta property="article:published_time" content="2020-10-06T16:50:38+09:00" />
+  <meta property="article:modified_time" content="2020-10-06T16:50:38+09:00" />
+
+
+
+
+</head>
+
+<body>
+  redirect to <a href="https://blog.p4ko.com">blog.p4ko.com</a>
+  <script>
+    location.href = `https://blog.p4ko.com${location.pathname}`
+  </script>
+</body>
+
+</html>

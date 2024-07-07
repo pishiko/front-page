@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+
+
+  <title>Youtubeの共有を便利にするWeb Appを作った // ぴしめも</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="pishiko" />
+  <meta name="description" content="" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.p4ko.com/ogp/youtube-share-hub.png" />
+
+  <meta name="twitter:title" content="Youtubeの共有を便利にするWeb Appを作った" />
+  <meta name="twitter:description"
+    content="Youtube Share Hub を作った →https://pishiko.github.io/youtube-share-hub/
+どんなの？ こんなの
+  Youtube の共有メニューから選択してツイートのリンクに遷移する web アプリケーション
+そのまま共有しても URL しか共有できないし Twitter カードも表示されないから不便だったので作りました．
+どんな技術使った？  PWA  Web Share Target API   vue.js bootstrap Github Pages  PWA について 最低構成は以下になる．
+index.html メインのアプリ
+serviceworker.js ServiceWorker が動くことでオフラインでもキャッシュで動作したりすることが可能，特にやりたいことが無ければ関数は空でもいい
+manifest.json これがキモ．アプリの名前，アイコンから，共有メニューからの動作まで設定できる． 楽ちんジェネレーターもある．アイコンもリサイズしてくれる．https://app-manifest.firebaseapp.com/
+Web Share Target API apk のアプリみたいに共有機能が使える．ただし，「なんちゃってホームに追加 Web アプリ」とかじゃこの機能は使えない．
+Chrome から PWA アプリと認められる条件は以下
+ アイコンが png であること．jpg はだめ ServiceWorker を用意する manifest.json が正しく記述されている  それから，Web Share API は今のところ Android でないと使えない．たのむよ Apple．" />
+
+  <meta property="og:title" content="Youtubeの共有を便利にするWeb Appを作った" />
+  <meta property="og:description"
+    content="Youtube Share Hub を作った →https://pishiko.github.io/youtube-share-hub/
+どんなの？ こんなの
+  Youtube の共有メニューから選択してツイートのリンクに遷移する web アプリケーション
+そのまま共有しても URL しか共有できないし Twitter カードも表示されないから不便だったので作りました．
+どんな技術使った？  PWA  Web Share Target API   vue.js bootstrap Github Pages  PWA について 最低構成は以下になる．
+index.html メインのアプリ
+serviceworker.js ServiceWorker が動くことでオフラインでもキャッシュで動作したりすることが可能，特にやりたいことが無ければ関数は空でもいい
+manifest.json これがキモ．アプリの名前，アイコンから，共有メニューからの動作まで設定できる． 楽ちんジェネレーターもある．アイコンもリサイズしてくれる．https://app-manifest.firebaseapp.com/
+Web Share Target API apk のアプリみたいに共有機能が使える．ただし，「なんちゃってホームに追加 Web アプリ」とかじゃこの機能は使えない．
+Chrome から PWA アプリと認められる条件は以下
+ アイコンが png であること．jpg はだめ ServiceWorker を用意する manifest.json が正しく記述されている  それから，Web Share API は今のところ Android でないと使えない．たのむよ Apple．" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://blog.p4ko.com/posts/youtube-share-hub/" />
+  <meta property="og:image" content="https://blog.p4ko.com/ogp/youtube-share-hub.png" />
+  <meta property="article:published_time" content="2020-03-30T04:32:22+09:00" />
+  <meta property="article:modified_time" content="2020-03-30T04:32:22+09:00" />
+
+
+
+
+</head>
+
+<body>
+  redirect to <a href="https://blog.p4ko.com">blog.p4ko.com</a>
+  <script>
+    location.href = `https://blog.p4ko.com${location.pathname}`
+  </script>
+</body>
+
+</html>

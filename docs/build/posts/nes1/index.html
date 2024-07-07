@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+
+
+  <title>Go ファミコンエミュレータ開発記録 その1 // ぴしめも</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="pishiko" />
+  <meta name="description" content="" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.p4ko.com/ogp/nes1.png" />
+
+  <meta name="twitter:title" content="Go ファミコンエミュレータ開発記録 その1" />
+  <meta name="twitter:description" content="リポジトリ
+ 日記みたいなものです． Twitter モーメントはこちら
+動機 任天堂レトロハードが好きなんですが，せっかくなら遊ぶだけじゃなくて中身にも詳しくなりたいと思っていました． 一番好きなのはスーファミなんですが，仕様が公開されておらず難易度が高そうなので，とりあえずシンプルそうなファミコンの動作の理解をしようと． で，前に Qiita でファミコンエミュレータの Hello world 解説記事があったのを思い出したので，今ならできる！と思って始めました．
+偉大なる先駆者様 ファミコンエミュレータの創り方　- Hello, World!編 - - Qiita
+Python で実装したい！ 最初は他の人がまだやっていないものを作りたくて，Python で書いて matplot のグラフ出力画面で動いたらオツだよな～と思って書いていたのですが，普通に CPU が 60fps でないので泣く泣く諦めました．
+これは果たされなかった夢の跡です． loading...
+&mdash; pishiko (@pishitaro_) loading...
+
+実装の流れは，ROM reader-&gt;CPU（Adressing -&gt; OP -&gt; WRAM read/write）-&gt; PPU( VRAM read/write -&gt;Line 生成-&gt;描画 )でした．
+Go 編 ということで，妥協して golang を採用しました． python は 8bit で uint として数値を扱えないので書きにくかったのですが，Go は圧倒的に楽でした．
+Python のソースコードをほぼ移植する形で，HelloWorld を実行したところ CPU は 60fps 十分に出ました．最高！" />
+
+  <meta property="og:title" content="Go ファミコンエミュレータ開発記録 その1" />
+  <meta property="og:description" content="リポジトリ
+ 日記みたいなものです． Twitter モーメントはこちら
+動機 任天堂レトロハードが好きなんですが，せっかくなら遊ぶだけじゃなくて中身にも詳しくなりたいと思っていました． 一番好きなのはスーファミなんですが，仕様が公開されておらず難易度が高そうなので，とりあえずシンプルそうなファミコンの動作の理解をしようと． で，前に Qiita でファミコンエミュレータの Hello world 解説記事があったのを思い出したので，今ならできる！と思って始めました．
+偉大なる先駆者様 ファミコンエミュレータの創り方　- Hello, World!編 - - Qiita
+Python で実装したい！ 最初は他の人がまだやっていないものを作りたくて，Python で書いて matplot のグラフ出力画面で動いたらオツだよな～と思って書いていたのですが，普通に CPU が 60fps でないので泣く泣く諦めました．
+これは果たされなかった夢の跡です． loading...
+&mdash; pishiko (@pishitaro_) loading...
+
+実装の流れは，ROM reader-&gt;CPU（Adressing -&gt; OP -&gt; WRAM read/write）-&gt; PPU( VRAM read/write -&gt;Line 生成-&gt;描画 )でした．
+Go 編 ということで，妥協して golang を採用しました． python は 8bit で uint として数値を扱えないので書きにくかったのですが，Go は圧倒的に楽でした．
+Python のソースコードをほぼ移植する形で，HelloWorld を実行したところ CPU は 60fps 十分に出ました．最高！" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://blog.p4ko.com/posts/nes1/" />
+  <meta property="og:image" content="https://blog.p4ko.com/ogp/nes1.png" />
+  <meta property="article:published_time" content="2020-11-23T00:24:55+09:00" />
+  <meta property="article:modified_time" content="2020-11-23T00:24:55+09:00" />
+
+
+
+<body>
+  redirect to <a href="https://blog.p4ko.com">blog.p4ko.com</a>
+  <script>
+    location.href = `https://blog.p4ko.com${location.pathname}`
+  </script>
+</body>iv>
+</footer>
+</body>
+
+</html>

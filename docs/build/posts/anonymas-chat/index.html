@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="jp">
+
+<head>
+
+
+  <title>匿名LINEチャットルームを作った // ぴしめも</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="pishiko" />
+  <meta name="description" content="" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.p4ko.com/ogp/anonymas-chat.png" />
+
+  <meta name="twitter:title" content="匿名LINEチャットルームを作った" />
+  <meta name="twitter:description" content="概要   LINE の Bot を公開しました。
+いままで身内向けの BOT を作ることはあったけど、初めてオープンなのを作りました。
+LINE の BOT を作るには HTTP リクエストを受けるサーバーが必要なんですが、サーバーを立てるのはお金がかかります。そこで今回は無料でそれっぽいことができる GoogleAppsScript を用いてやってみました。
+ソースコード https://github.com/pishiko/anonymous-linechatbot
+実装したこと   基本機能（発言を他の利用者に拡散）
+  アイコンの実装
+  ミュート機能
+  解説   まず LINE API で多数にメッセージを配信するには宛先の userId を指定する必要があります。しかし、Bot と友達になっているユーザーのリストは API では手に入らないため、自分で用意する必要があります。なので、友達登録されたときのイベントを使って記録していきます。
+次に記録ですが、DB を GAS でお手軽に実装するには GoogleSpreadSheet を用います。視覚的にも分かりやすいし簡単だし、ちょっと遅いけど使えます。
+アイコンはキューを GSS で実装して、友達登録時にユーザーリストに ID と一緒にします。友達をやめたときはアイコンキューに戻してやって、ユーザーリストから ID ごと消してやります。
+ミュート機能はユーザーがミュートかどうかリストに保存して、LINE API のリッチメニューから操作できるようにします。リッチメニューは LINE @MANAGER からぽちぽちで作れます。リッチメニューのボタンが押されたらキーワードを発言するように設定して、それを GAS でキャッチします。
+最後に発言をほかの登録者に拡散するようにします。LINE API のイベントでメッセージ受信をキャッチして、userId からユーザーリストを検索してアイコンを取得、そのあとユーザーリストの発信者以外かつミュートになっていない人に成形したメッセージを配信します。
+おわり" />
+
+  <meta property="og:title" content="匿名LINEチャットルームを作った" />
+  <meta property="og:description" content="概要   LINE の Bot を公開しました。
+いままで身内向けの BOT を作ることはあったけど、初めてオープンなのを作りました。
+LINE の BOT を作るには HTTP リクエストを受けるサーバーが必要なんですが、サーバーを立てるのはお金がかかります。そこで今回は無料でそれっぽいことができる GoogleAppsScript を用いてやってみました。
+ソースコード https://github.com/pishiko/anonymous-linechatbot
+実装したこと   基本機能（発言を他の利用者に拡散）
+  アイコンの実装
+  ミュート機能
+  解説   まず LINE API で多数にメッセージを配信するには宛先の userId を指定する必要があります。しかし、Bot と友達になっているユーザーのリストは API では手に入らないため、自分で用意する必要があります。なので、友達登録されたときのイベントを使って記録していきます。
+次に記録ですが、DB を GAS でお手軽に実装するには GoogleSpreadSheet を用います。視覚的にも分かりやすいし簡単だし、ちょっと遅いけど使えます。
+アイコンはキューを GSS で実装して、友達登録時にユーザーリストに ID と一緒にします。友達をやめたときはアイコンキューに戻してやって、ユーザーリストから ID ごと消してやります。
+ミュート機能はユーザーがミュートかどうかリストに保存して、LINE API のリッチメニューから操作できるようにします。リッチメニューは LINE @MANAGER からぽちぽちで作れます。リッチメニューのボタンが押されたらキーワードを発言するように設定して、それを GAS でキャッチします。
+最後に発言をほかの登録者に拡散するようにします。LINE API のイベントでメッセージ受信をキャッチして、userId からユーザーリストを検索してアイコンを取得、そのあとユーザーリストの発信者以外かつミュートになっていない人に成形したメッセージを配信します。
+おわり" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://blog.p4ko.com/posts/anonymas-chat/" />
+  <meta property="og:image" content="https://blog.p4ko.com/ogp/anonymas-chat.png" />
+  <meta property="article:published_time" content="2020-04-01T21:46:39+09:00" />
+  <meta property="article:modified_time" content="2020-04-01T21:46:39+09:00" />
+
+
+
+
+</head>
+
+<body>
+  redirect to <a href="https://blog.p4ko.com">blog.p4ko.com</a>
+  <script>
+    location.href = `https://blog.p4ko.com${location.pathname}`
+  </script>
+</body>
+
+</html>
