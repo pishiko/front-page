@@ -88,22 +88,31 @@ function App() {
             </a>
           </div>
           <div>
-            <a target={"_blank"} href="https://blog.p4ko.com" rel="noreferrer">
-              TechBlog (blog.p4ko.com)
-            </a>
-          </div>
-          <div>
-            <a target={"_blank"} href="https://note.com/p4k" rel="noreferrer">
-              note (note.com/p4k)
-            </a>
-          </div>
-          <div>
             <a
               target={"_blank"}
               href="https://github.com/pishiko"
               rel="noreferrer"
             >
               GitHub (github.com/pishiko)
+            </a>
+          </div>
+          <div>
+            <a target={"_blank"} href="https://blog.p4ko.com" rel="noreferrer">
+              TechBlog (blog.p4ko.com)
+            </a>
+          </div>
+          <div>
+            <a target={"_blank"} href="https://note.com/p4k" rel="noreferrer">
+              Note (note.com/p4k)
+            </a>
+          </div>
+          <div>
+            <a
+              target={"_blank"}
+              href="https://sizu.me/p4k"
+              rel="noreferrer"
+            >
+              しずかなインターネット (sizu.me/p4k)
             </a>
           </div>
         </div>
