@@ -1,6 +1,19 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import "./App.css";
 import { CSSTransition } from "react-transition-group";
+
+interface SocialLink {
+  label: string;
+  href: string;
+}
+
+const SOCIAL_LINKS: readonly SocialLink[] = [
+  { label: "Twitter (@pishitaro_)", href: "https://twitter.com/pishitaro_" },
+  { label: "GitHub (github.com/pishiko)", href: "https://github.com/pishiko" },
+  { label: "TechBlog (blog.p4ko.com)", href: "https://blog.p4ko.com" },
+  { label: "Note (note.com/p4k)", href: "https://note.com/p4k" },
+  { label: "しずかなインターネット (sizu.me/p4k)", href: "https://sizu.me/p4k" },
+];
 
 function App() {
   const [titleActive, setTitleActive] = useState(false);
@@ -9,6 +22,11 @@ function App() {
   const [animationDone, setAnimationDone] = useState(false);
 
   const [mousePosRate, setMousePosRate] = useState({ x: 0, y: 0 });
+
+  const titlesRef = useRef<HTMLDivElement>(null);
+  const tomatoRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const curtainTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const onMouseMove: MouseEventHandler = (event) => {
     if (!animationDone) return;
@@ -19,37 +37,45 @@ function App() {
 
   useEffect(() => {
     setTitleActive(true);
+    return () => {
+      if (curtainTimeoutRef.current) {
+        clearTimeout(curtainTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (
     <div className="App" onMouseMove={onMouseMove}>
       <CSSTransition
+        nodeRef={titlesRef}
         in={titleActive}
         timeout={2000}
         unmountOnExit={false}
-        classNames={"titles"}
+        classNames="titles"
         onEntered={() => {
           setTitleActive(false);
-          new Promise((resolve) => setTimeout(resolve, 4700)).then(() =>
-            setCurtain(true)
-          );
+          curtainTimeoutRef.current = setTimeout(() => {
+            setCurtain(true);
+          }, 4700);
         }}
         onExited={() => setExplosion(true)}
       >
-        <div className="titles">
+        <div ref={titlesRef} className="titles">
           <div className="titles-container-l">
             <div className="title">p</div>
             <div className="title">4</div>
             <div className="title">k</div>
           </div>
           <CSSTransition
+            nodeRef={tomatoRef}
             in={explosion}
             timeout={3000}
             unmountOnExit={false}
-            classNames={"tomato"}
+            classNames="tomato"
             onEntered={() => setExplosion(false)}
           >
             <div
+              ref={tomatoRef}
               className="tomato"
               style={{
                 left: -mousePosRate.x * 8,
@@ -67,54 +93,26 @@ function App() {
           </div>
         </div>
       </CSSTransition>
+
       <CSSTransition
+        nodeRef={contentRef}
         in={curtain}
         timeout={1000}
         unmountOnExit={false}
-        classNames={"content"}
+        classNames="content"
         onEntered={() => {
           setAnimationDone(true);
         }}
       >
-        <div className="content">
+        <div ref={contentRef} className="content">
           <h1>p4ko.com</h1>
-          <div>
-            <a
-              target={"_blank"}
-              href="https://twitter.com/pishitaro_"
-              rel="noreferrer"
-            >
-              Twitter (@pishitaro_)
-            </a>
-          </div>
-          <div>
-            <a
-              target={"_blank"}
-              href="https://github.com/pishiko"
-              rel="noreferrer"
-            >
-              GitHub (github.com/pishiko)
-            </a>
-          </div>
-          <div>
-            <a target={"_blank"} href="https://blog.p4ko.com" rel="noreferrer">
-              TechBlog (blog.p4ko.com)
-            </a>
-          </div>
-          <div>
-            <a target={"_blank"} href="https://note.com/p4k" rel="noreferrer">
-              Note (note.com/p4k)
-            </a>
-          </div>
-          <div>
-            <a
-              target={"_blank"}
-              href="https://sizu.me/p4k"
-              rel="noreferrer"
-            >
-              しずかなインターネット (sizu.me/p4k)
-            </a>
-          </div>
+          {SOCIAL_LINKS.map((link) => (
+            <div key={link.href}>
+              <a target="_blank" href={link.href} rel="noreferrer">
+                {link.label}
+              </a>
+            </div>
+          ))}
         </div>
       </CSSTransition>
     </div>
