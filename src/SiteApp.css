@@ -1,0 +1,59 @@
+/* Site Container */
+.site-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0f0f0f;
+}
+
+/* Top View Container (left page) */
+.top-view-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateX(0);
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.8s;
+  will-change: transform;
+  z-index: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* When navigating to Lab, Top view slides to the left */
+.top-view-wrapper.on-lab {
+  transform: translateX(-100%);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Lab View Container (right page) */
+.lab-view-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateX(100%);
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.8s;
+  will-change: transform;
+  z-index: 2;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 
+  When navigating to Lab: Lab view slides in from the right to center (0)
+  When navigating back to Top: Lab view slides back to the right (translateX(100%))
+*/
+.lab-view-wrapper.on-lab {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}

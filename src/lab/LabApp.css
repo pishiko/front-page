@@ -1,0 +1,218 @@
+/* Base Lab Slide Container (Solid Yellow #f4c430) */
+.lab-page {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f4c430;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.lab-content {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Left Column: Navigation, Header, Links */
+.lab-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5vh 5vw;
+  color: #4a2e18;
+  z-index: 3;
+}
+
+/* Back link to top (←) */
+.lab-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a2e18;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  width: fit-content;
+}
+
+.lab-back-link:hover {
+  transform: translateX(-6px);
+  opacity: 0.8;
+}
+
+.lab-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  margin: 0 0 1rem 0;
+  color: #4a2e18;
+  letter-spacing: -0.02em;
+}
+
+.lab-subtitle {
+  font-size: 1.1rem;
+  color: #4a2e18;
+  opacity: 0.85;
+  margin: 0 0 3rem 0;
+  font-weight: 700;
+}
+
+/* Link list */
+.lab-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lab-link-card {
+  display: block;
+  text-decoration: none;
+  color: #4a2e18;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  width: fit-content;
+  max-width: 90%;
+}
+
+.lab-link-card:hover {
+  background-color: #ffffff;
+  transform: translateX(8px);
+}
+
+.lab-link-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lab-link-desc {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Right Column: Giraffe Stage */
+.lab-right {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 0;
+  pointer-events: auto;
+}
+
+/* Giraffe Puppet Stage */
+.giraffe-stage {
+  position: relative;
+  width: min(380px, 45vw);
+  height: min(600px, 75vh);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* 
+  Entrance wrapper: handles translateY ONLY.
+  Once entered, keeps the lower edge below the stage while swaying.
+*/
+.giraffe-entrance {
+  width: 100%;
+  height: 100%;
+  transform: translateY(115%);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.giraffe-entrance.entered {
+  transform: translateY(24px);
+}
+
+/* 
+  Puppet element: handles rotation (wobble) ONLY.
+  Driven smoothly by cursor movement physics via inline style transform.
+  Base resting position: transform: rotate(0deg).
+*/
+.giraffe-puppet {
+  width: 100%;
+  height: 100%;
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  will-change: transform;
+}
+
+.giraffe-puppet > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Entrance momentum wobble: triggers ONLY on initial entry */
+.giraffe-puppet.entry-wobble {
+  animation: giraffe-entrance-wobble 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
+}
+
+@keyframes giraffe-entrance-wobble {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  90% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .lab-content {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    min-height: 100vh;
+  }
+
+  .lab-left {
+    padding: 2rem 1.5rem 4rem 1.5rem;
+  }
+
+  .lab-right {
+    flex: none;
+    height: 35vh;
+    min-height: 220px;
+    align-items: flex-end;
+  }
+
+  .giraffe-stage {
+    width: 220px;
+    height: 100%;
+  }
+
+  .lab-title {
+    font-size: 2.5rem;
+  }
+
+  .lab-link-card {
+    max-width: 100%;
+  }
+}

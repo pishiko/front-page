@@ -2,6 +2,11 @@
 
 Personal portal and landing site for [p4ko.com](https://p4ko.com).
 
+## Pages
+
+- `/` : Top landing portal with tomato animation
+- `/lab` : Experimental works with giraffe puppet animation
+
 ## Tech Stack
 
 - **Framework**: React 18

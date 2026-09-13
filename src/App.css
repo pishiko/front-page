@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@800&display=swap');
-
 body {
   padding: 0;
   margin: 0;
@@ -8,118 +5,74 @@ body {
   font-family: 'Poppins', 'Noto Sans JP', sans-serif;
 }
 
-.titles {
-  width: 100%;
-  position: fixed;
-  top: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
+.App {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
   overflow: hidden;
+  background: #0f0f0f;
 }
 
-.titles-container-l {
-  width: 100%;
-  text-align: right;
-  overflow: hidden;
+.App::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #16a085;
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  pointer-events: none;
 }
 
-.titles-container-r {
-  width: 100%;
-  text-align: left;
+.App.background-revealed::before {
+  transform: translateY(0);
+}
+
+.tomato-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
   overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tomato-filters {
+  position: absolute;
+}
+
+.tomato-entrance {
+  margin-top: 15vh;
+}
+
+.tomato-arriving {
+  animation: tomato-drop 0.55s ease-in both;
+}
+
+@keyframes tomato-drop {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(0); }
 }
 
 .tomato {
-  width: 804px;
-  height: 804px;
-  background: url(./img/tomato_join.png);
-  background-position: 0 0;
-  padding-top: 450px;
-  margin-right: -240px;
-  margin-left: -250px;
-  margin-bottom: -800px;
-  transform: translate(0, 40%);
-  flex-shrink: 0;
-  color: #0000;
+  --tomato-size: min(804px, 100vw, 100vh);
+  width: var(--tomato-size);
+  height: var(--tomato-size);
+  background: url(./img/tomato_join.png) no-repeat 0 0 / 1600% 100%;
 }
 
-.titles-enter .tomato {
-  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+.tomato-exploding {
+  animation: tomato-explosion 0.8s steps(15) forwards;
 }
 
-.titles-enter .tomato,
-.titles-enter-done .tomato,
-.titles-exit .tomato,
-.titles-exit-done .tomato {
-  transform: translate(0, 0);
-  opacity: 1;
+.tomato-exploded {
+  background-position: 100% 0;
 }
 
-.tomato-enter {
-  background-position: -12060px 0;
-  transition: background 0.8s steps(15) 2s;
-}
-
-.tomato-enter-done,
-.tomato-exit,
-.tomato-exit-done {
-  background-position: -12060px 0;
-}
-
-.title {
-  color: white;
-  font-size: 13vw;
-  display: inline-block;
-  transform: translate(0, 105%);
-}
-
-.titles-enter .title {
-  transform: translate(0, 0);
-  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
-}
-
-.titles-enter-done .title,
-.titles-exit .title,
-.titles-exit-done .title {
-  transform: translate(0, 0);
-}
-
-.titles-exit .title {
-  opacity: 0;
-  transition: opacity 0.8s;
-}
-
-.titles-exit-done .title {
-  opacity: 0;
-}
-
-.titles-enter .titles-container-l .title:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.titles-enter .titles-container-l .title:nth-child(3) {
-  transition-delay: 0.2s;
-}
-
-.titles-enter .tomato {
-  transition-delay: 0.3s;
-}
-
-.titles-enter .titles-container-r .title:nth-child(1) {
-  transition-delay: 0.4s;
-}
-
-.titles-enter .titles-container-r .title:nth-child(2) {
-  transition-delay: 0.5s;
-}
-
-.titles-enter .titles-container-r .title:nth-child(3) {
-  transition-delay: 0.6s;
-}
-
-.titles-enter .titles-container-r .title:nth-child(4) {
-  transition-delay: 0.7s;
+@keyframes tomato-explosion {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
 }
 
 .content {
@@ -131,31 +84,9 @@ body {
   width: 97vw;
   padding-left: 3vw;
   height: 100vh;
-  visibility: hidden;
+  z-index: 1;
   font-size: 3vh;
   color: white;
-}
-
-.content-enter-done {
-  visibility: visible;
-}
-
-.content:before {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #16a085;
-  transform: translate(0, 100%);
-  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s;
-  content: '';
-}
-
-.content-enter-done:before {
-  z-index: -1;
-  transform: translate(0, 0);
 }
 
 .content a {
@@ -168,49 +99,43 @@ body {
   cursor: default;
 }
 
+.lab-nav-button {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  z-index: 10;
+}
+
+.lab-nav-button:hover {
+  transform: translateY(-50%) translateX(10px);
+}
+
 @media screen and (min-width: 599px) {
-  .content a:hover {
+  .content a:not(.lab-nav-button):hover {
     background-color: #ffffff80;
-  }
-  .tomato {
-    position: relative;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .titles {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+  .tomato-stage {
+    inset: 0;
+    place-items: center;
   }
 
-  .titles-container-l {
-    width: 100%;
-    text-align: left;
-  }
-
-  .titles-container-r {
-    width: 100%;
-    text-align: right;
-  }
-
-  .tomato {
-    transform: translate(0, 0);
-    opacity: 0;
-    padding-top: 0;
-    margin-top: -180px;
-    margin-bottom: -300px;
-    position: static;
-  }
-
-  .titles-enter .tomato {
-    opacity: 1;
-    transition: opacity 1s 0.5s;
-  }
-
-  .title {
-    font-size: min(15vh, 20vw);
+  .tomato-entrance {
+    margin-top: 0;
   }
 
   .content h1 {
@@ -219,5 +144,17 @@ body {
 
   .content a {
     font-size: 6vw;
+  }
+
+  .lab-nav-button {
+    position: static;
+    transform: none;
+    margin-top: 1.5rem;
+    padding: 0.5rem 0;
+    font-size: 7vw;
+  }
+
+  .lab-nav-button:hover {
+    transform: translateX(6px);
   }
 }

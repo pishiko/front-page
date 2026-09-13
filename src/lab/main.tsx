@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import SiteApp from "./SiteApp";
-import FontLoader from "./FontLoader";
+import SiteApp from "../SiteApp";
+import FontLoader from "../FontLoader";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -11,6 +11,6 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <FontLoader>{ready => <SiteApp ready={ready} />}</FontLoader>
+    <FontLoader>{ready => <SiteApp initialView="lab" ready={ready} />}</FontLoader>
   </React.StrictMode>
 );
