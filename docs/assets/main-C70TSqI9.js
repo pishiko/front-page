@@ -1,1 +1,0 @@
-import{R as r,j as t,a as n,F as s,S as a}from"./FontLoader-DVfQqFXo.js";const e=document.getElementById("root");if(!e)throw new Error("Failed to find root element");const c=r.createRoot(e);c.render(t.jsx(n.StrictMode,{children:t.jsx(s,{children:o=>t.jsx(a,{ready:o})})}));
