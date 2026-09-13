@@ -11,28 +11,10 @@ export interface LabItem {
 
 export const LAB_ITEMS: readonly LabItem[] = [
   {
-    id: "exp-1",
-    title: "Experiment 01",
-    description: "Interactive canvas experiment",
-    url: "https://example.com/exp1",
-  },
-  {
-    id: "exp-2",
-    title: "Experiment 02",
-    description: "Web audio & generative synthesizer demo",
-    url: "https://example.com/exp2",
-  },
-  {
-    id: "exp-3",
-    title: "Experiment 03",
-    description: "Camera-based motion detection tool",
-    url: "https://example.com/exp3",
-  },
-  {
-    id: "exp-4",
-    title: "Experiment 04",
-    description: "Procedural animation playground",
-    url: "https://example.com/exp4",
+    id: "game-lab",
+    title: "Game Lab",
+    description: "ミニゲーム集です",
+    url: "https://p4ko-games.55dorakoro.workers.dev/",
   },
 ];
 
@@ -118,7 +100,10 @@ export default function LabApp({
     };
 
     const updatePhysics = () => {
-      const now = typeof performance !== "undefined" && performance.now ? performance.now() : Date.now();
+      const now =
+        typeof performance !== "undefined" && performance.now
+          ? performance.now()
+          : Date.now();
       const isMoving = now - lastMoveTime < 60;
 
       // Only apply impulse if cursor movement exceeds threshold (deadzone for small/slow movements)
@@ -128,7 +113,8 @@ export default function LabApp({
           initialWobbleDoneRef.current = true;
           setInitialWobbleDone(true);
         }
-        const effectiveDx = Math.sign(deltaX) * (absDeltaX - MOVEMENT_THRESHOLD);
+        const effectiveDx =
+          Math.sign(deltaX) * (absDeltaX - MOVEMENT_THRESHOLD);
         velocity += effectiveDx * IMPULSE_FACTOR;
         velocity = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, velocity));
       }
@@ -141,7 +127,11 @@ export default function LabApp({
       currentAngle = Math.max(-MAX_ANGLE, Math.min(MAX_ANGLE, currentAngle));
 
       // When cursor has stopped moving and spring has settled to rest: snap cleanly to 0 and halt RAF
-      if (!isMoving && Math.abs(currentAngle) < 0.04 && Math.abs(velocity) < 0.04) {
+      if (
+        !isMoving &&
+        Math.abs(currentAngle) < 0.04 &&
+        Math.abs(velocity) < 0.04
+      ) {
         currentAngle = 0;
         velocity = 0;
         if (puppetRef.current) {
@@ -153,7 +143,9 @@ export default function LabApp({
 
       if (puppetRef.current) {
         puppetRef.current.style.transform =
-          currentAngle === 0 ? "rotate(0deg)" : `rotate(${currentAngle.toFixed(2)}deg)`;
+          currentAngle === 0
+            ? "rotate(0deg)"
+            : `rotate(${currentAngle.toFixed(2)}deg)`;
       }
 
       rafId = safeRaf(updatePhysics);
@@ -171,7 +163,10 @@ export default function LabApp({
         deltaX += dx;
       }
       lastX = clientX;
-      lastMoveTime = typeof performance !== "undefined" && performance.now ? performance.now() : Date.now();
+      lastMoveTime =
+        typeof performance !== "undefined" && performance.now
+          ? performance.now()
+          : Date.now();
       scheduleUpdate();
     };
 
